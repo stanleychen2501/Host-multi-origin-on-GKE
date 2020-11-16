@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: xff-ingress
+spec:
+  tls:
+  - secretName: mt-asianet-me
+  - secretName: test-cn326-cn
+  rules:
+  - host: mt.asianet.me
+    http:
+       paths: 
+        - backend:
+            serviceName: xff-asia
+            servicePort: asia-port
+  - host: test.cn326.cn
+    http:
+       paths: 
+        - backend:
+            serviceName: xff-cn
+            servicePort: cn-port

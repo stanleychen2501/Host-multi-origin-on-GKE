@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+#deployment name
+metadata:    
+  name: xff-asia
+spec:
+  selector:
+    matchLabels:
+#Your app name      
+      app: xff-asia
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: xff-asia
+    spec:
+      containers:
+       - name: xffserver-first
+         image: "asia.gcr.io/stanleylab/xff-asia"
+#liveness, change the LB check path, the port have to mapping with Doockerfile and main.go
+         livenessProbe: 
+            httpGet:
+              path: /xff
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+#Your service port, that mapping with main.go and Dockfile           
+         ports:
+           - containerPort: 8080

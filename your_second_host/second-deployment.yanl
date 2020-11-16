@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xff-cn
+spec:
+  selector:
+    matchLabels:
+      app: xff-cn
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: xff-cn
+    spec:
+      containers:
+       - name: xffserver-second
+         image: "asia.gcr.io/stanleylab/xff-test-cn"
+         livenessProbe:
+            httpGet:
+              path: /xff
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 5
+         ports:
+           - containerPort: 8081          
