@@ -32,7 +32,7 @@
 | go.mod      | run go on your local device | 1 |
 | go.sum| run go on your local device | 1 |
 | Dockerfile| Dockerfile for each domain  | 2 |
-| deployment.yaml| deployment YANL for each domain  | 2|
+| deployment.yaml| deployment YAML for each domain  | 2|
 | service.yaml| service YAML for each domain  | 2|
 | ingress.yaml| ingress YAML  | 1 |
 
